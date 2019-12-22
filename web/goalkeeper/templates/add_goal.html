@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+{#{% for message in get_flashed_messages() %}#}
+{#    <div class="flash">{{ message }}</div>#}
+{#  {% endfor %}#}
+    <div class="container justify-content-center">
+        <div class="jumbotron">
+            <h1>Add Goals</h1>
+        </div>
+        <form action="{{ url_for('goals.add_goal') }}" method="post">
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Goal Name:</label>
+                    {{ form.title(class_="form-control")}}
+                    <label for="formGroupExampleInput">Goal Description:</label>
+                    {{ form.description(class_="form-control") }}
+                    <label for="formGroupExampleInput">Tags:</label>
+                    {{ form.tags(class_="form-control") }}
+                    <label for="formGroupExampleInput">Private:</label>
+                    {{ form.private_goal(class_="form-control") }}
+                    <div class="form-group row mt-3">
+                        <div class="col-sm-10">
+                          <button type="submit" class="btn btn-primary">Create Goal</button>
+                        </div>
+                    </div>
+                    {{ form.csrf_token }}
+                </div>
+        </form>
+    </div>
+{% endblock %}

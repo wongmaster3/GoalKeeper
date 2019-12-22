@@ -1,0 +1,38 @@
+version: '3.6'
+
+services:
+  flask:
+    container_name: Goalkeeper
+    build: ./web
+    env_file: ./web/database.conf
+    depends_on:
+      - db
+    ports:
+      - 5000:5000
+    volumes:
+      - ./web:/app
+    deploy:
+      resources:
+        limits:
+          cpus: '.5'
+          memory: '256M'
+
+
+  db:
+    container_name: Goalkeeper-db
+    image: postgres:latest
+    env_file: ./web/database.conf
+    ports:
+      - 5432:5432
+    volumes:
+      - database:/var/lib/postgresql
+    deploy:
+      resources:
+        limits:
+          cpus: '.5'
+          memory: '256M'
+
+
+volumes:
+  app:
+  database:

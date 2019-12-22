@@ -1,0 +1,152 @@
+table {
+    width: 100%;
+}
+
+thead {
+    border-bottom: 3px solid rgba(58, 58, 58, 0.21);
+}
+
+th {
+    height: 45px;
+}
+
+.top-bar {
+    margin-top: 2em;
+}
+
+.top-bar h1 {
+    font-weight: bold;
+}
+
+.default {
+    padding-left: 1em;
+    padding-top: 0.6em;
+    padding-bottom: 0.6em;
+}
+
+.sortable {
+    cursor: pointer;
+}
+
+.sortable:hover {
+    background-color: rgb(233, 236, 239);
+}
+
+.num {
+    text-align:center;
+    width: 5.5em;
+    vertical-align: middle;
+    padding: 0.2em;
+}
+
+.topic-list-item {
+    border-bottom: 1px solid rgba(103, 103, 103, 0.15);
+}
+
+.top-line {
+    font-size: large;
+}
+
+.link:hover, .link:visited, .link:link, .link:active {
+    text-decoration: none;
+    color: rgb(33, 37, 41);
+    font-weight: bold;
+}
+
+.tag {
+    background-color: #e9ecef;
+    cursor: pointer;
+}
+
+.new-topic {
+    float: right;
+    color: rgb(33, 37, 41);
+    background-color: #e9ecef;
+    font-weight: bold;
+    border-radius: 0.3em;
+    margin-bottom: 1em;
+    padding: 0.2em 0.5em 0.2em 0.5em;
+}
+
+.new-topic:hover {
+    background-color: #cacdcf;
+    cursor: pointer;
+}
+
+.new-topic-icon {
+    display: inline-flex;
+    vertical-align: middle;
+    padding-bottom: 0.1em;
+}
+
+.header-line {
+    width: 100%;
+}
+
+.header-line i {
+    float: right;
+    cursor: pointer;
+    margin-left: 0.2em;
+}
+
+#editor {
+    min-height: 20em;
+}
+
+#new-post input[type=text], select {
+    width: 100%;
+    margin-bottom: 0.2em;
+    padding: 0.2em 0.5em 0.2em 1em;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.post-data {
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.info-top {
+    margin-bottom: 1em;
+    font-style: italic;
+}
+
+.info-bottom {
+    margin-top: 1em;
+    font-style: italic;
+}
+
+.post-creation {
+    float: right;
+}
+
+.replies {
+    margin-left: 1em;
+}
+
+.reply   {
+    margin-left: 1em;
+    border-left: 2px solid rgba(58, 58, 58, 0.21);
+    padding-left: 1em;
+    margin-bottom: 2em;
+}
+
+.btn-box {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.reply-btn {
+    font-style: normal;
+    color: rgb(33, 37, 41);
+    background-color: #e9ecef;
+    border-radius: 0.3em;
+    margin-bottom: 1em;
+    padding: 0.2em 0.5em 0.2em 0.5em;
+}
+
+.reply-btn:hover {
+    background-color: #cacdcf;
+    cursor: pointer;
+}

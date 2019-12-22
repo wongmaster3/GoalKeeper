@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link href="{{url_for('static', filename='custom.css')}}" rel="stylesheet" type="text/css" />
+        {% block extralinks %}{% endblock %}
+        <title>{% block title %}{% endblock %} - Goal Keeper</title>
+    {% endblock %}
+</head>
+<body>
+{#    {% block navbar %} {{nav.account_nav.render()}} {% endblock %}#}
+<div class="pos-f-t">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="{{ url_for('accounts.home') }}">Goal Keeper</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('accounts.home') }}">Home </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('feed.home') }}">Feed </a>
+          </li>
+{#          <li class="nav-item">#}
+{#            <a class="nav-link" href="{{ url_for('goals.add_goal') }}">Create Goals </a>#}
+{#          </li>#}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('accounts.completed_goals') }}">View Completed Goals</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('accounts.view_calendar') }}">Calendar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('friends.list_friends') }}">Find Friends</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('forum.home') }}">Forums</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('notifications.list_notifications') }}">
+                Notifications
+{#                <span class="badge badge-light">4</span>#}
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('accounts.logout') }}">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+</div>
+<div class="container">
+  <div class="flash-container">
+    <div class="flash">
+      {% for message in get_flashed_messages() %}
+        <div class="alert alert-info alert-dismissible fade show">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<div class="content">
+  {% block content %}{% endblock %}
+</div>
+
+<footer>
+  <div class="text-center py-3">
+    Goal Keeper: Created by UMD CMSC 435 Fall 2019 Team 3
+  </div>
+</footer>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+</body>
+</html>

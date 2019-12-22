@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container justify-content-center">
+        <div class="jumbotron">
+            <h1>Your Friends</h1>
+        </div>
+        {% if friends %}
+        <ol class="list-group">
+        {% for friend in friends %}
+            <a href="{{ url_for('friends.view_profile', friendemail=friend.email) }}" class="list-group-item list-group-item-action ">
+               <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{ friend.username }}</h5>
+                </div>
+                <p>{{ friend.email }}</p>
+            </a>
+        {% endfor %}
+        </ol>
+        {% else %}
+            <h5 class="mb-1">You have no friends yet :(</h5>
+        {% endif %}
+
+        <div class="jumbotron mt-4">
+            <h1>Pending Friend Requests</h1>
+        </div>
+        {% if pending_receive %}
+        <ol class="list-group">
+        {% for friend in pending_receive %}
+            <li class="list-group-item ">
+               <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{ friend.username }}</h5>
+                </div>
+                <p>{{ friend.email }}</p>
+                <a class="btn btn-primary" href="{{ url_for('friends.add_friend', friendemail=friend.email) }}">Accept Friend Request!</a>
+            </li>
+        {% endfor %}
+        </ol>
+        {% else %}
+            <h5 class="mb-1">You have no friend requests!</h5>
+        {% endif %}
+
+        <div class="jumbotron mt-4">
+            <h1>Pending Sent Friend Requests</h1>
+        </div>
+        {% if pending_sent %}
+        <ol class="list-group">
+        {% for friend in pending_sent %}
+            <li class="list-group-item ">
+               <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{ friend.username }}</h5>
+                </div>
+                <p>{{ friend.email }}</p>
+                <button id="pending" class="btn btn-primary">Pending</button>
+            </li>
+        {% endfor %}
+        </ol>
+        {% else %}
+            <h5 class="mb-1">You have no pending sent friend requests!</h5>
+        {% endif %}
+
+        <div class="jumbotron mt-4">
+            <h1>Find Friends</h1>
+        </div>
+        <ol class="list-group">
+        {% for friend in find_friends %}
+            <li class="list-group-item ">
+               <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{ friend.username }}</h5>
+                </div>
+                <p>{{ friend.email }}</p>
+                <a class="btn btn-primary" href="{{ url_for('friends.add_friend', friendemail=friend.email) }}">Add Friend!</a>
+            </li>
+        {% endfor %}
+        </ol>
+
+
+    </div>
+
+{% endblock %}

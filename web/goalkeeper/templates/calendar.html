@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='calendar.css') }}" />
+    <script src="{{ url_for('static', filename='calendar.js') }}" ></script>
+{% endblock %}
+
+{% block content %}
+<div class="overlay" id="overlay">
+    <form action="{{ url_for('goals.add_goal') }}" method="post" class="overlay_content">
+        <h1>
+            Add Goal
+            <div style="color: black; display: inline-block; float: right; background-color: #ddd; padding: 5px;" onclick="off()">X</div>
+        </h1>
+        <p class="overlay_form_content">
+            <p>Goal Name: {{ form.title(class_="form-control") }}</p>
+            <p>Goal Description: {{ form.description(class_="form-control") }}</p>
+            <p>Private: {{ form.private_goal(class_="form-control") }}</p>
+            <p>Goal Date: <span id="goal_date"></span><input id="due_date" name="due_date" type="hidden"></p>
+            <input class="btn btn-primary" type="submit" onclick="off()">
+            {{ form.csrf_token }}
+        </p>
+    </form>
+</div>
+<div class="month">
+    <ul>
+        <li class="prev" onclick="decrementMonth()">&#10094;</li>
+        <li class="next" onclick="incrementMonth()">&#10095;</li>
+        <li>
+            <span style="font-size:18px" id="monthText">
+
+            </span>
+            <br>
+            <span style="font-size:18px" id="yearText">
+
+            </span>
+        </li>
+    </ul>
+</div>
+
+<ul class="weekdays">
+    <li>Sunday</li>
+    <li>Monday</li>
+    <li>Tuesday</li>
+    <li>Wednesday</li>
+    <li>Thursday</li>
+    <li>Friday</li>
+    <li>Saturday</li>
+</ul>
+
+<ul class="days" id="days"></ul>
+
+<div id="debug">
+
+</div>
+
+<script type="text/javascript">
+    setCalendar();
+</script>
+{% endblock %}

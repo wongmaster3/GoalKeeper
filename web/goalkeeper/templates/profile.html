@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container justify-content-center">
+        <div class="jumbotron">
+            <h2>Profile:</h2>
+            <h3>{{ friend_user.username }}</h3>
+            <h3>{{ friend_user.email }}</h3>
+        </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+            <h3>Completed Goals</h3>
+            <ol class="list-group">
+            {% for goal in completed_goals %}
+                <div class="list-group-item list-group-item-action ">
+                   <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{ goal.title }}</h5>
+                        <small>{{ goal.created_date }}</small>
+                    </div>
+                    <p class="mb-1">{{ goal.description }}</p>
+                    <small>{{ goal.tags }}</small>
+                </div>
+            {% endfor %}
+            </ol>
+        </div>
+        <div class="col-sm">
+          <div class="col-sm">
+            <h3>Uncomplete Goals</h3>
+            <ol class="list-group">
+            {% for goal in uncompleted_goals %}
+                <div class="list-group-item list-group-item-action ">
+                   <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{ goal.title }}</h5>
+                        <small>{{ goal.created_date }}</small>
+                    </div>
+                    <p class="mb-1">{{ goal.description }}</p>
+                    <small>{{ goal.tags }}</small>
+                </div>
+            {% endfor %}
+            </ol>
+        </div>
+        </div>
+        <div class="col-sm">
+          Chat them here!
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

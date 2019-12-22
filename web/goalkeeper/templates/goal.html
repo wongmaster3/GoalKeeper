@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container justify-content-center">
+        <div class="jumbotron">
+            <h1>The current Goal is {{ currentgoal.title }} {% if currentgoal.private_goal %} <img class="private" src="{{ url_for('static', filename='private.png') }}" alt="private post" /> {% endif %}</h1>
+            <p>{{ currentgoal.description }}</p>
+            <p>Created on: {{ currentgoal.created_date }}</p>
+            {% if currentgoal.due_date is not none %}
+                <p>Due on: {{ currentgoal.due_date }}</p>
+            {% endif %}
+        </div>
+        {% if currentgoal.user_email == useremail %}
+            {% if currentgoal.completion == False %}
+                <form action="{{ url_for('goals.goal', goalid=currentgoal.id) }}" method = "post">
+                    <input type="submit" value="Complete Goal!!!" class="btn btn-primary"/>
+                </form>
+            {% else %}
+                Goal Completed Already!
+            {% endif %}
+        {% endif %}
+    </div>
+{% endblock %}
